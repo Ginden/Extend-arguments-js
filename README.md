@@ -73,6 +73,7 @@ Tested:
 * Firefox 29
 * Chromium 34
 * Node.js 0.10.25
+
 Should work:
 * IE 9+
 * Firefox 4+

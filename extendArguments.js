@@ -14,10 +14,14 @@
 }(this, function () {
     'use strict';
     
+    // Should return "[object Arguments]"
+    // http://www.ecma-international.org/ecma-262/5.1/#sec-10.6
     var MAGIC_ARGUMENTS_TO_STRING = (function(){
         return Object.prototype.toString.call(arguments);
     })();
     
+    
+    // Object.prototype.toString is the most reliable way to determine [[Class]] of object
     function isArgumentsObject(what) {
         return Object.prototype.toString.call(what) === MAGIC_ARGUMENTS_TO_STRING;        
     }
@@ -26,7 +30,7 @@
     var argumentsProto = Object.create(null);
     
     
-    // returns value from argumentsProto 
+    // returns value from argumentsProto if this is arguments Object
     function mockingGetter(propName) {
         if (isArgumentsObject(this)) {
             return argumentsProto[propName];

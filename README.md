@@ -6,7 +6,7 @@ Because I can. Just proof of concept.
 ## How can I use this?
 
 ### Basic usage
-```
+```javascript
 var extendArguments = require('extend-arguments');
 extendArguments('foo', 'bar');
 
@@ -35,7 +35,7 @@ Object.prototype.forEach = function() {
 
 #### Extend by literal
 
-```
+```javascript
 extendArguments({
     forEach: Array.prototype.forEach,
     toArray: Array.prototype.slice
@@ -44,7 +44,7 @@ extendArguments({
 
 
 #### Extend by Array methods
-```
+```javascript
 var methodsFromArray = {};
 Object.getOwnPropertyNames(Array.prototype).forEach(function(el) {
     methodsFromArray[el] = Array.prototype[el];
@@ -60,7 +60,7 @@ extendArguments(
 
 ### ArgumentsPrototype object
 
-```
+```javascript
 ArgumentsPrototype.foo = 'bar';
 (function() {
     return arguments.foo;

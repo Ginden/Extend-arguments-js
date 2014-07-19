@@ -1,0 +1,33 @@
+{
+  "name": "Extend arguments object",
+  "description": "Allows extending of arguments object",
+  "version": "0.5",
+  "keywords": [
+    "proof-of-concept",
+    "arguments",
+    "extend",
+    ""
+  ],
+  "maintainers": [
+    {
+      "name": "Ginden",
+      "email": "michalwadas@gmail.com",
+      "web": ""
+    }
+  ],
+  "bugs": {
+    "web": ""
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/Ginden/Extend-arguments-js"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "MIT license (MIT)",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ]
+}

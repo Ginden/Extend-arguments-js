@@ -1,4 +1,3 @@
-// if the module has no dependencies, the above pattern can be simplified to
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
@@ -26,11 +25,8 @@
     var storage = Object.create(null);
     var argumentsProto = Object.create(null);
     
-    window.debug = {
-        storage: storage,
-        argumentsProto: argumentsProto
-    };
     
+    // returns value from argumentsProto 
     function mockingGetter(propName) {
         if (isArgumentsObject(this)) {
             return argumentsProto[propName];
@@ -53,15 +49,29 @@
     }
     
     return function extendArguments(name, value) {
-        if (Object.prototype[name]) {
-            storage[name] = Object.prototype[name]
+        if (typeof name === 'string') {
+            if (Object.prototype[name]) {
+                storage[name] = Object.prototype[name]
+            }
+            Object.defineProperty(Object.prototype, name, {
+                set: simpleCurry(mockingSetter, name),
+                get: simpleCurry(mockingGetter, name),
+                enumerable: false,
+                configurable: true
+            });
+            argumentsProto[name] = value;
         }
-        Object.defineProperty(Object.prototype, name, {
-            set: simpleCurry(mockingSetter, name),
-            get: simpleCurry(mockingGetter, name),
-            enumerable: false,
-            configurable: true
-        });
-        argumentsProto[name] = value;
+        else if (typeof name === 'object' && name) {
+            for (var key in name) {
+                if (Object.prototype.hasOwnProperty.call(name, key)) {
+                    extendArguments(key, name[key]);
+                }
+            }
+        }
+        else {
+            throw new TypeError('Invalid arguments for extendArguments');
+        }
     };
 }));
+
+

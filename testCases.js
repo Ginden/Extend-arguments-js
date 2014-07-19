@@ -1,4 +1,4 @@
-var extendArguments = require('./extend-arguments.js');
+var extendArguments = require('extendArguments.js');
 
 function TestCase(name, func1, func2, func3) {
     func3 = func3 || function (a, b) {return a === b;}

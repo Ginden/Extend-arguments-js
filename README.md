@@ -1,7 +1,13 @@
 # extendArguments.js
 
 ## Why?
-Because I can. Just proof of concept.
+Because I can. Just a proof of concept.
+
+## How to install?
+
+```bash
+npm install extend-arguments
+```
 
 ## How can I use this?
 

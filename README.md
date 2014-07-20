@@ -1,7 +1,7 @@
 # extendArguments.js
 
 ## Why?
-Because I can. Just a proof of concept.
+Because I can. You probably shouldn't use this - it's just a proof of concept.
 
 ## How to install?
 
@@ -14,27 +14,39 @@ npm install extend-arguments
 ### Basic usage
 ```javascript
 var extendArguments = require('extend-arguments');
-extendArguments('foo', 'bar');
 
+extendArguments('foo', 'bar');
 extendArguments('forEach', Array.prototype.forEach);
+
+
+
+
+// returns 'bar'
+(function() {
+   return arguments.foo;
+})()
+
+// logs 'a', 'b', 'c'
 (function() {
     arguments.forEach(console.log.bind(console));
-})('a','b', 'c')
-// logs 'a', 'b', 'c'
+})('a','b', 'c') 
 
-({0: 1, length: 1}).forEach(console.log.bind(console));
 // TypeError: (intermediate value).forEach is not a function
 
+({0: 1, length: 1}).forEach(console.log.bind(console));
+
+// defining properties on Object.prototype don't break extensions of arguments object
 Object.prototype.forEach = function() {
     throw new Error('Just testing.');
 }
 
-({0: 1, length: 1}).forEach(console.log.bind(console)); // Error: Just testing
+// Error: Just testing
+({0: 1, length: 1}).forEach(console.log.bind(console));
 
+// logs 'a', 'b', 'c'
 (function() {
     arguments.forEach(console.log.bind(console));
-})('a','b', 'c') // logs 'a', 'b', 'c'
-
+})('a','b', 'c') 
 ```
 
 ### Extend by object
@@ -60,6 +72,8 @@ extendArguments(
     methodsFromArray
 );
 ```
+
+## How does it work?
 
 
 ## TODO:

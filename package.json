@@ -21,7 +21,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/Ginden/Extend-arguments-js"
+      "url": "https://github.com/Ginden/extend-arguments-js"
     }
   ],
   "licenses": [

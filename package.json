@@ -1,5 +1,5 @@
 {
-  "name": "Extend arguments object",
+  "name": "extend-arguments",
   "description": "Allows extending of arguments object",
   "version": "0.5",
   "keywords": [
